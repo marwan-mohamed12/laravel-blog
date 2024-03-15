@@ -11,7 +11,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{mb_strimwidth($post->title, 0, 20) }}</h5>
                 <p class="card-text">{{mb_strimwidth($post->body, 0, 40)}}</p>
-                <a href="{{ url(" /posts/{$post->id}") }}" class="btn btn-primary">Read More
+                <a href="{{ url("/posts/{$post->id}") }}" class="btn btn-primary">Read More
                     &rarr;</a>
             </div>
         </div>
