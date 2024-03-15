@@ -1,9 +1,9 @@
 @extends('layout.app')
 @section('title', 'Posts List')
 @section('content')
-
+@include('components.Pagination')
 <div class="table-responsive">
-    <table class="table table-fit mt-5 table-dark table-striped">
+    <table class="table table-fit table-dark table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>

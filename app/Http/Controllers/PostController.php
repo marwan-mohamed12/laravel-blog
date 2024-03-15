@@ -17,7 +17,7 @@ class PostController extends Controller
 
     public function showPostsTable()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(10);
         return view('posts.postsTable', ['posts' => $posts]);
     }
 
