@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePost;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -38,13 +39,8 @@ class PostController extends Controller
         return view("posts.create");
     }
 
-    public function store(Request $request)
+    public function store(StorePost $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'body' => 'required',
-            'enabled' => 'required'
-        ]);
         Post::create(['title' => $request->title, 'body' => $request->body, 'enabled' => $request->enabled, 'published_at' => Carbon::now()]);
         return redirect()->route('posts.postsTable')->with('success', 'Post Added successfully');
     }
