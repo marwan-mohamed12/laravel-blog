@@ -23,6 +23,10 @@
                         <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title"
                             value="{{old('title')}}" required />
+                        @error('title')
+                        @include('components.toast', ['msg' => 'title should be less than 50 character', 'toastType' =>
+                        'primary'])
+                        @enderror
                     </div>
                     <div class="col-12">
                         <label for="body" class="form-label">Body <span class="text-danger">*</span></label>
@@ -39,6 +43,15 @@
                             <option value="">Choose 0 or 1</option>
                             <option value="0">0</option>
                             <option value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label for="userSelect" class="form-label">Author <span class="text-danger">*</span></label>
+                        <select id="userSelect" name="user" class="form-select" required>
+                            {{old('enabled')}}
+                            <option value="">Choose Author</option>
+                            <option value="1">Marwan</option>
+                            <option value="2">Abbas</option>
                         </select>
                     </div>
                     <div class="col-12">

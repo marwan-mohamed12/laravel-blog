@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Post;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
@@ -21,7 +20,8 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence,
             'body' => $this->faker->paragraph,
             'enabled' => $this->faker->boolean,
-            'published_at' => $this->faker->dateTime()
+            'published_at' => $this->faker->dateTime(),
+            'user_id' => $this->faker->numberBetween(0, 10)
         ];
     }
 }

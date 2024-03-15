@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePost;
 use App\Models\Post;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,9 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::paginate(9);
+        Post::where('user_id', 0)->update(['user_id' => 3]);
+        User::factory(10)->create();
+        $posts = Post::with('user')->paginate(9);
         return view("posts.index", ['posts' => $posts]);
     }
 
@@ -41,7 +44,7 @@ class PostController extends Controller
 
     public function store(StorePost $request)
     {
-        Post::create(['title' => $request->title, 'body' => $request->body, 'enabled' => $request->enabled, 'published_at' => Carbon::now()]);
+        Post::create(['title' => $request->title, 'body' => $request->body, 'enabled' => $request->enabled, 'published_at' => Carbon::now(), 'user_id' => $request->user]);
         return redirect()->route('posts.postsTable')->with('success', 'Post Added successfully');
     }
 

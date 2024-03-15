@@ -10,6 +10,7 @@
                 <th scope="col">Title</th>
                 <th scope="col">Body</th>
                 <th scope="col">Enabled</th>
+                <th scope="col">User</th>
                 <th scope="col">Published at</th>
                 <th scope="col">Actions</th>
             </tr>
@@ -21,6 +22,7 @@
                 <td>{{$post->title}}</td>
                 <td>{{$post->body}}</td>
                 <td>{{$post->enabled}}</td>
+                <td>{{$post->user->name}}</td>
                 <td>{{date("l jS \of F Y h:i:s A", strtotime($post->published_at ))}}</td>
                 <td>
                     <div class="d-flex flex-row mb-3 gap-2">
