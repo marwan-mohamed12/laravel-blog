@@ -13,6 +13,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $attributes = [
+        'posts_count' => 0, // Default value for 'posts_count'
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
