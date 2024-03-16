@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('title', 'Posts List')
 @section('content')
-@include('components.Pagination')
+@include('components.Pagination', ['items' => $posts])
 <div class="table-responsive">
     <table class="table table-fit table-dark table-striped">
         <thead>
