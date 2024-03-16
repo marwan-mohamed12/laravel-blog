@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 // Display List of posts
-// Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/table', [PostController::class, 'showPostsTable'])->name('posts.postsTable');
 
 // Show form to Enter post data
