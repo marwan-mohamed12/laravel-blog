@@ -37,7 +37,7 @@ Route::get('posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('posts/table', [PostController::class, 'showPostsTable'])->name('posts.postsTable');
 
 // Show form to Enter post data
-Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('posts/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
 
 // Show Trashed Posts
 Route::get('posts/trash', [PostController::class, 'showTrashedPosts'])->name('posts.trash');
