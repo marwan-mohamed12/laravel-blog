@@ -20,8 +20,8 @@
             <tr>
                 <th scope="row">{{$post->id}}</th>
                 <td>{{$post->title}}</td>
-                <td>{{$post->body}}</td>
-                <td>{{$post->enabled}}</td>
+                <td>{{substr($post->body, 0, 50)}}.....</td>
+                <td>{{$post->enabled ? 'Yes' : "No"}}</td>
                 <td>{{$post->user->name}}</td>
                 <td>{{date("l jS \of F Y h:i:s A", strtotime($post->published_at ))}}</td>
                 <td>

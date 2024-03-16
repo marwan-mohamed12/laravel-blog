@@ -21,7 +21,7 @@ class PostFactory extends Factory
             'body' => $this->faker->paragraph,
             'enabled' => $this->faker->boolean,
             'published_at' => $this->faker->dateTime(),
-            'user_id' => $this->faker->numberBetween(0, 10)
+            'user_id' => $this->faker->numberBetween(191, 210)
         ];
     }
 }
