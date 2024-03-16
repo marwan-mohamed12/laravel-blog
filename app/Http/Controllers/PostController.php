@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -43,7 +44,7 @@ class PostController extends Controller
 
     public function store(StorePost $request)
     {
-        Post::create(['title' => $request->title, 'body' => $request->body, 'enabled' => $request->enabled, 'published_at' => Carbon::now(), 'user_id' => $request->user]);
+        Post::create(['title' => $request->title, 'body' => $request->body, 'enabled' => $request->enabled, 'published_at' => Carbon::now(), 'user_id' => Auth::id()]);
         return redirect()->route('posts.postsTable')->with('success', 'Post Added successfully');
     }
 

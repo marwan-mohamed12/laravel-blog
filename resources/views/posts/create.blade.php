@@ -46,15 +46,6 @@
                         </select>
                     </div>
                     <div class="col-12">
-                        <label for="userSelect" class="form-label">Author <span class="text-danger">*</span></label>
-                        <select id="userSelect" name="user" class="form-select" required>
-                            {{old('enabled')}}
-                            <option value="">Choose Author</option>
-                            <option value="1">Marwan</option>
-                            <option value="2">Abbas</option>
-                        </select>
-                    </div>
-                    <div class="col-12">
                         <input type="submit" value="submit" class="col-12 btn btn-primary" />
                     </div>
                 </div>

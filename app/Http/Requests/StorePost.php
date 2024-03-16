@@ -22,7 +22,7 @@ class StorePost extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'min:50'],
+            'title' => ['required', 'max:60'],
             'body' => 'required',
             'enabled' => 'required'
         ];
