@@ -13,8 +13,7 @@ class PostController extends Controller
 
     public function index()
     {
-        Post::where('user_id', 0)->update(['user_id' => 3]);
-        User::factory(10)->create();
+        // User::factory(10)->create();
         $posts = Post::with('user')->paginate(9);
         return view("posts.index", ['posts' => $posts]);
     }

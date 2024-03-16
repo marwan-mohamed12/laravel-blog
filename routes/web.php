@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,8 @@ Route::put('posts/{id}', [PostController::class, 'update'])->name('posts.update'
 
 // Delete specific post
 Route::delete('posts/{id}', [PostController::class, 'destroy'])->name("posts.destroy")->where('id', '[0-9]+');
+
+Route::get('users', [UserController::class, 'index'])->name('users.index');
 
 // Error Page
 Route::fallback(fn () => view('error'));

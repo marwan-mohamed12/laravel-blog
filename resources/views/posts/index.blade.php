@@ -19,5 +19,5 @@
     @endforeach
 
 </div>
-@include('components.Pagination')
+@include('components.Pagination', ['items' => $posts])
 @endsection

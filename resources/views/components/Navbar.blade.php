@@ -17,6 +17,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url("posts/table")}}">Posts</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url("users")}}">Users</a>
+                </li>
             </ul>
         </div>
     </div>
