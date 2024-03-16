@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +31,33 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Display List of posts
+// Route::get('posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('posts/table', [PostController::class, 'showPostsTable'])->name('posts.postsTable');
+
+// Show form to Enter post data
+Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
+
+// Show Trashed Posts
+Route::get('posts/trash', [PostController::class, 'showTrashedPosts'])->name('posts.trash');
+
+Route::post('posts', [PostController::class, 'store'])->name('posts.store'); //save data
+
+// Get info about specific post
+Route::get('posts/{id}', [PostController::class, 'show'])->name('posts.show')->where('id', '[0-9]+');
+
+// Show edit form for specific post
+Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit')->where('id', '[0-9]+');
+
+// Update specific post
+Route::put('posts/{id}', [PostController::class, 'update'])->name('posts.update')->where('id', '[0-9]+');
+
+// Delete specific post
+Route::delete('posts/{id}', [PostController::class, 'destroy'])->name("posts.destroy")->where('id', '[0-9]+');
+
+Route::get('users', [UserController::class, 'index'])->name('users.index');
+
+// Error Page
+Route::fallback(fn () => view('error'));
+
