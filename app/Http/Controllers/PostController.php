@@ -46,7 +46,7 @@ class PostController extends Controller
 
     public function store(StorePost $request)
     {
-        event(new PostCreated(Auth::user()));
+        event(new PostCreated(Auth::id()));
         Post::create(['title' => $request->title, 'body' => $request->body, 'enabled' => $request->enabled, 'published_at' => Carbon::now(), 'user_id' => Auth::id()]);
         return redirect()->route('posts.postsTable')->with('success', 'Post Added successfully');
     }

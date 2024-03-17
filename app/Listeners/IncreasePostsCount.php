@@ -22,7 +22,7 @@ class IncreasePostsCount
      */
     public function handle(PostCreated $event): void
     {
-        $userId = $event->user->id;
+        $userId = $event->userId;
         User::find($userId)->update(['posts_count' => User::findOrFail($userId)->posts_count + 1]);
     }
 }
