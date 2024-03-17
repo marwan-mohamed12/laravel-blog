@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostCreated;
 use App\Http\Requests\StorePost;
 use App\Models\Post;
 use App\Models\User;
@@ -44,6 +45,7 @@ class PostController extends Controller
 
     public function store(StorePost $request)
     {
+        event(new PostCreated(Auth::user()));
         Post::create(['title' => $request->title, 'body' => $request->body, 'enabled' => $request->enabled, 'published_at' => Carbon::now(), 'user_id' => Auth::id()]);
         return redirect()->route('posts.postsTable')->with('success', 'Post Added successfully');
     }
