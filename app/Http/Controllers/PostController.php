@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\PostCreated;
 use App\Events\PostDeleted;
 use App\Http\Requests\StorePost;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Models\User;
 use Carbon\Carbon;
@@ -57,7 +58,7 @@ class PostController extends Controller
         return view('posts.edit', ['post' => $post]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdatePostRequest $request, string $id)
     {
 
         $request->validate([

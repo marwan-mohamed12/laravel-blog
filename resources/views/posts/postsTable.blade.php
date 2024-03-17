@@ -25,6 +25,7 @@
                 <td>{{$post->user->name}}</td>
                 <td>{{date("l jS \of F Y h:i:s A", strtotime($post->published_at ))}}</td>
                 <td>
+                    @if ($post->user_id == Auth::id())
                     <div class="d-flex flex-row mb-3 gap-2">
                         <div>
                             <a href="{{url("posts/{$post->id}/edit")}}" class="btn btn-primary">
@@ -42,6 +43,7 @@
                             </form>
                         </div>
                     </div>
+                    @endif
                 </td>
             </tr>
             @endforeach

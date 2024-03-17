@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckPostOwner;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,7 +49,7 @@ Route::post('posts', [PostController::class, 'store'])->name('posts.store'); //s
 Route::get('posts/{id}', [PostController::class, 'show'])->name('posts.show')->where('id', '[0-9]+');
 
 // Show edit form for specific post
-Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit')->where('id', '[0-9]+');
+Route::get('posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit')->where('id', '[0-9]+')->middleware(CheckPostOwner::class);
 
 // Update specific post
 Route::put('posts/{id}', [PostController::class, 'update'])->name('posts.update')->where('id', '[0-9]+');
