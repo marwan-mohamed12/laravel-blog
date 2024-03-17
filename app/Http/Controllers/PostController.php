@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\PostCreated;
+use App\Events\PostDeleted;
 use App\Http\Requests\StorePost;
 use App\Models\Post;
 use App\Models\User;
@@ -71,6 +72,7 @@ class PostController extends Controller
 
     public function destroy(string $id)
     {
+        event(new PostDeleted(Auth::id()));
         Post::find($id)->delete();
         return redirect()->route('posts.postsTable')->with('success', 'Post deleted successfully');
     }

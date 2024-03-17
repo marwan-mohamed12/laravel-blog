@@ -3,11 +3,14 @@
 namespace App\Providers;
 
 use App\Events\PostCreated;
+use App\Events\PostDeleted;
+use App\Listeners\DecreasePostsCount;
 use App\Listeners\IncreasePostsCount;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Ramsey\Uuid\Type\Decimal;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -22,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         PostCreated::class => [
             IncreasePostsCount::class
+        ],
+        PostDeleted::class => [
+            DecreasePostsCount::class
         ]
     ];
 
