@@ -24,7 +24,7 @@
                         <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title"
                             value="{{old('title')}}" required />
                         @error('title')
-                        @include('components.toast', ['msg' => 'title should be less than 50 character', 'toastType' =>
+                        @include('includes.toast', ['msg' => 'title should be less than 50 character', 'toastType' =>
                         'primary'])
                         @enderror
                     </div>

@@ -11,11 +11,11 @@
 </head>
 
 <body class="mb-5 pb-3">
-    @include('components.navbar')
+    @include('includes.navbar')
     <section class="container">
         @yield('content')
     </section>
-    @include('components.footer')
+    @include('includes.footer')
 
 
     <!-- Bootstrap JS -->
