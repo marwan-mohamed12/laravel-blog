@@ -16,7 +16,7 @@
             <p>{{$error}}</p>
             @endforeach
             @endif --}}
-            <form action="{{route('posts.store')}}" method="POST">
+            <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row gy-3 gy-md-4 overflow-hidden">
                     <div class="col-12">
@@ -27,6 +27,18 @@
                         @include('includes.toast', ['msg' => 'title should be less than 50 character', 'toastType' =>
                         'primary'])
                         @enderror
+                    </div>
+                    <div class="col-12">
+                        <label for="fileUpload" class="form-label">Article Image <span
+                                class="text-danger">*</span></label>
+                        <input type="file" class="form-control" name="image" id="fileUpload" placeholder="Upload File"
+                            value="{{old('image')}}" />
+                    </div>
+                    <div class="col-12">
+                        <label for="photoUpload" class="form-label">Thumbnail Image <span
+                                class="text-danger">*</span></label>
+                        <input type="file" class="form-control" name="thumbImage" id="photoUpload"
+                            placeholder="Upload imgae" value="{{old('thumbImage')}}" />
                     </div>
                     <div class="col-12">
                         <label for="body" class="form-label">Body <span class="text-danger">*</span></label>

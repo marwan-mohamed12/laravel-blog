@@ -48,7 +48,17 @@ class PostController extends Controller
     public function store(StorePost $request)
     {
         event(new PostCreated(Auth::id()));
-        Post::create(['title' => $request->title, 'body' => $request->body, 'enabled' => $request->enabled, 'published_at' => Carbon::now(), 'user_id' => Auth::id()]);
+        $imgPath = '';
+        if ($request->has('image') && $request->file('image')->isValid()) {
+            $imgPath = $request->file('image')->store('posts', ['disk' => 'public']);
+        }
+
+        $thumbPath = '';
+        if ($request->has('thumbImage') && $request->file('thumbImage')->isValid()) {
+            $thumbPath = $request->file('thumbImage')->store('posts', ['disk' => 'public']);
+        }
+
+        Post::create(['title' => $request->title, 'body' => $request->body, 'enabled' => $request->enabled, 'published_at' => Carbon::now(), 'user_id' => Auth::id(), 'image' => $imgPath, 'thumbImage' => $thumbPath]);
         return redirect()->route('posts.postsTable')->with('success', 'Post Added successfully');
     }
 
